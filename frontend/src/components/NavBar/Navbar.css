@@ -20,7 +20,11 @@
 
   }
 
-
+  .title-icon{
+    color: white;
+    font-size: 2rem;
+    margin-left: 6px;
+  }
   .navigation-menu {
     margin-left: auto;
     margin-right: 5rem;
@@ -125,3 +129,34 @@
       display: block;
     }
   }
+
+
+/**** hovering effect on the nav-items `nav-li-for-hovering` ****/
+
+/* .nav-li-for-hovering:hover {
+  text-decoration: underline;
+  transition: transform 0.25s ease-out;
+} */
+
+.nav-li-for-hovering {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-li-for-hovering:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0px;
+  left: 0;
+  background-color: #cd5ff8;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-li-for-hovering:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

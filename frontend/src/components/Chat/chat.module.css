@@ -1,7 +1,5 @@
 .main {
-    padding: 30px;
-    background-image: url(../../assets/background3.jpg);
-    background-size: cover;
+    padding: 10px 30px 30px 30px;
   }
   
   .loadcontainer {
@@ -13,7 +11,7 @@
   
   .container {
     margin: 0 auto;
-    height: calc(100vh - 60px);
+    height: calc(92vh - 60px);
     width: 100%;
     max-width: 1100px;
     display: flex;
@@ -25,25 +23,31 @@
   }
   
   .container .header {
-    background-color: #edf2f7;
+    background-color: #3b3d3e;
     display: flex;
     justify-content: space-between;
     padding: 10px;
     font-family: 'Chakra Petch', sans-serif;
     align-items: center;
+    height: 20px;
   }
   
   .link {
-    color: #046cf1;
+    color: #a0a1a2;
     cursor: pointer;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
     height: 100%;
     border-bottom: 3px solid transparent;
     font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
   }
   
   .link:hover {
-    color: #0d4ad9;
+    color: white;
     cursor: pointer;
+  }
+
+  .greet{
+    color: #e1e1e1;
   }

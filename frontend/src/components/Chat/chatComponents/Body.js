@@ -1,8 +1,8 @@
 import React from "react";
-import chatbot from "../../assets/robot.png";
-import user from "../../assets/user1.png";
+import chatbot from "./robot.png";
+import user from "./user1.png";
 import styles from "./body.module.css";
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../../context";
 
 const Body = () => {
   const { messages, processing, lastMsg } = useGlobalContext();

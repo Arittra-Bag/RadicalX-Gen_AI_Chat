@@ -3,6 +3,7 @@
   background-color: #121218;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .App-logo {

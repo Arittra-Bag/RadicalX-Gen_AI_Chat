@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./chat.module.css";
 
-import Title from "../../components/Title/Title";
-import InputBar from "../../components/InputBar/InputBar";
-import Body from "../../components/Body/Body";
+import Title from "./chatComponents/Title";
+import InputBar from "./chatComponents/InputBar";
+import Body from "./chatComponents/Body";
 
 import { auth } from "../Authentication/firebase";
 import { signOut } from "firebase/auth";
@@ -38,7 +38,7 @@ const Chat = (props) => {
         <div className={styles.main}>
           <div className={styles.container}>
             <div className={`${styles.header} ${styles.item}`}>
-              <h2>Hey, {userName === "" ? "User" : `${props.name}`} </h2>
+              <h2 className={styles.greet}>Hey, {userName === "" ? "User" : `${props.name}`} </h2>
               <Link
                 to="/login"
                 activeClassName={styles.active}
