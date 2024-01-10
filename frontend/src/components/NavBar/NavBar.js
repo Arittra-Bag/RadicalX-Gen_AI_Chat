@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
 import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
+import { IoReorderThreeSharp } from "react-icons/io5";
 const NavBar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const { isLoggedIn } = useAuth(); // this is for saving the state after logging in 
@@ -11,12 +12,13 @@ const NavBar = () => {
       <Link to="/" className="brand-name">
         RelX 
       </Link><HiChatBubbleBottomCenterText className="title-icon"/>
-      <button
+      <IoReorderThreeSharp
         className="hamburger"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
         }}
-      ></button>
+        style={{color : "white"}}
+      ></IoReorderThreeSharp>
 
       <div
         className={
@@ -43,7 +45,7 @@ const NavBar = () => {
           </li>
           <li className="nav-li-for-hovering">
             <Link to="/about" className="nav-item">
-              About
+              AboutUs
             </Link>
           </li>
         </ul>

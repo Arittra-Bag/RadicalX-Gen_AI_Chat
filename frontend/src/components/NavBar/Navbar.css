@@ -53,7 +53,7 @@
     width: 40px;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: #283b8b;
+    background-color: #121218;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   /* // positions the icon to the right and center aligns it vertically */
@@ -138,25 +138,30 @@
   transition: transform 0.25s ease-out;
 } */
 
-.nav-li-for-hovering {
-  display: inline-block;
-  position: relative;
-}
 
-.nav-li-for-hovering:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0px;
-  left: 0;
-  background-color: #cd5ff8;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
+@media screen and (min-width: 780px) {
+  /* ... other styles ... */
 
-.nav-li-for-hovering:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  .nav-li-for-hovering {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .nav-li-for-hovering:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0px;
+    left: 0;
+    background-color: #cd5ff8;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .nav-li-for-hovering:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 }

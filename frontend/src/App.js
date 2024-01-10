@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
 import Chat from "./components/Chat/Chat";
+import About from "./components/AboutUs/About";
 import { AuthProvider } from './components/Authentication/AuthContext';
 
 import { BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom';
@@ -38,6 +39,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/tryit" element={<Chat name={userName} />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {/* <Footer/> */}
