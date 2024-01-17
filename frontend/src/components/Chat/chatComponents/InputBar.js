@@ -21,7 +21,7 @@ const InputBar = () => {
       console.error("Error sending API request:", error);
       setResponse("Error Processing this message. Please try again later."); // Set a specific error message
     }
-  };KO  
+  };
 
   const handleSubmit = () => {
     // Perform any other necessary actions before sending the API request
