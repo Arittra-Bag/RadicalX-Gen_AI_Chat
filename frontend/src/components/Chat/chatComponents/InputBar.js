@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./inputbar.module.css";
 import { IoSend } from "react-icons/io5";
 import { useGlobalContext } from "../../../context";
-import { callGoogleApi } from "C:/Users/aritt/OneDrive/Desktop/RadicalX-Gen-AI-Messenger/RadicalX-Gen_AI_Chat/frontend/src/utils/api.js"; // Correct import
+import { callGoogleApi } from "../../../utils/api"; // Correct import
 
 const InputBar = () => {
   const { messageText, setMessageText, handleSubmission } = useGlobalContext();
@@ -43,16 +43,13 @@ const InputBar = () => {
         placeholder="Type here..."
         value={messageText}
         onChange={(event) => setMessageText(event.target.value)}
-        onKeyUp={(event) => (event.key === "Enter" ? handleSubmit() : "")}
+        onKeyUp={(event) => (event.key === "Enter" ? handleSubmission() : "")}
       />
-      <div className={styles.btn} onClick={handleSubmit}>
+      <div className={styles.btn} onClick={handleSubmission}>
         <div className={styles.icon}>
           <IoSend />
         </div>
       </div>
-
-      {/* Display the API response */}
-      {response && <p>{response}</p>}
     </div>
   );
 };

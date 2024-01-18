@@ -1,8 +1,9 @@
-import React from "react";
+import React , {useState} from "react";
 import chatbot from "./robot.png";
 import user from "./user1.png";
 import styles from "./body.module.css";
 import { useGlobalContext } from "../../../context";
+import { callGoogleApi } from "../../../utils/api"; // Correct import
 
 const Body = () => {
   const { messages, processing, lastMsg } = useGlobalContext();
@@ -48,7 +49,7 @@ const Body = () => {
       ) : (
         ""
       )}
-
+      
       <div ref={lastMsg} />
     </div>
   );

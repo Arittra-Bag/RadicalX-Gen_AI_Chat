@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useRef, useState } from "react";
+import { callGoogleApi } from "./utils/api";
 
 const AppContext = createContext();
 
@@ -14,71 +15,68 @@ const AppProvider = ({ children }) => {
     const [processing, setProcessing] = useState(false);
   
 
-  const handleSubmission = async () => {
-    if (!messageText.trim() || processing) return;
-
-    const tempMessages = [
-      ...messages,
-      {
-        from: "human",
-        text: messageText,
-      },
-    ];
-
-    setMessages(tempMessages);
-    setMessageText("");
-
-    setTimeout(() =>
-      lastMsg.current.scrollIntoView({
-        behavior: "smooth",
-      })
-    );
-
-    try {
-      setProcessing(true);
-      const res = await fetch(`http://localhost:5500`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: tempMessages.slice(-8),
-        }),
-      });
-    // const placeholderRes = {}; // Placeholder for 'res'
-      setProcessing(false);
-
-      const data = await res.json();
-    //   console.log(data);
-      const ans = data.data;
+    const handleSubmission = async () => {
+        if (!messageText.trim() || processing) return;
     
-    // without backend
-    // const data = await placeholderRes.json();
-    // const ans = data.data;
+        const tempMessages = [
+          ...messages,
+          {
+            from: "human",
+            text: messageText,
+          },
+        ];
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          from: "ai",
-          text: ans.trim(),
-        },
-      ]);
-    } catch (err) {
-      const error = "Error Proceesing this message. Please try in sometime";
-      setMessages((prev) => [
-        ...prev,
-        {
-          from: "ai",
-          text: error,
-        },
-      ]);
-    }
+        setMessages(tempMessages);
+        setMessageText("");
+    
+        setTimeout(() => {
+          const lastMessage = lastMsg.current;
+    
+          if (lastMessage && lastMessage.scrollIntoView) {
+            lastMessage.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }, 10);
+      
 
-    setTimeout(() =>
-      lastMsg.current.scrollIntoView({
-        behavior: "smooth",
-      })
-    );
+        try {
+            setProcessing(true);
+      
+            // Make an API request to Google AI with the user's messageText
+            const ans = await callGoogleApi(messageText);
+      
+            setProcessing(false);
+      
+            setMessages((prev) => [
+              ...prev,
+              {
+                from: "ai",
+                text: ans,
+              },
+            ]);
+          } catch (err) {
+            const error = "Error Processing this message. Please try again later.";
+            setMessages((prev) => [
+              ...prev,
+              {
+                from: "ai",
+                text: error,
+              },
+            ]);
+          }
+
+    setTimeout(() => {
+        const lastMessage = lastMsg.current;
+      
+        // Check if lastMessage is not null or undefined
+        if (lastMessage && lastMessage.scrollIntoView) {
+          lastMessage.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      }, 10); // Adjust the delay (in milliseconds) as needed
+      
   };
 
   return (

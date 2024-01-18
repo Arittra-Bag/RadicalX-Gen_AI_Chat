@@ -32,11 +32,6 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="nav-li-for-hovering">
-            <Link to="/dashboard" className="nav-item">
-              DashBoard
-            </Link>
-          </li>
-          <li className="nav-li-for-hovering">
             {isLoggedIn ? (
               <Link to="/tryit" className="nav-item">Try It</Link>
             ) : (
